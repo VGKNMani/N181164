@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Question 1</title>
+	<style type="text/css">
+		#h1{
+			border: 2px solid black;
+			border-radius: 10px;
+			width: 25%;
+			margin-left: 500px;
+			padding: 10px;
+			background-color: #686de0;
+			color: white;
+			font-family: Tahoma;
+		}
+		#span{
+			color: red;
+			font-size: 10px;
+			text-decoration: none;
+		}
+		#h1:hover{
+			background-color: green;
+			color: yellow;
+		}
+		.tc{
+			text-align: right;
+		}
+		div{
+			border: 2px solid black;
+			height: 800px;
+			width: 800px;
+			padding-top: 20px;
+		}
+		.slide{
+			/*position: absolute;
+			top: 35px;
+			border: 2px solid black;
+			margin-left:250px;
+			margin-top: 100px;
+			height: 454px;
+			width: 57%;
+			text-align: center;*/
+			z-index: -1;
+
+			background: url("Ganpati.png");
+			/*background-size: cover;*/
+			animation: slide 20s infinite linear;
+	
+		}
+		@keyframes slide{
+		0%{
+			background: url("i1.jpg");
+		}
+		25%{
+			background: url("i2.jpg");
+		}
+		75%{
+			background: url("i5.jpg");
+		}
+		100%{
+			background: url("i4.jpg");
+		}
+	
+}
+		
+	</style>
+	
+</head>
+<body>
+	<h1 id="h1" align="center"><u>F1H20</u><span id="span">RGUKT</span></h1>
+	<center>
+		<div class="slide">
+			<form action="success.html" method="post" onsubmit="return validate();"> 
+				<table>
+					<tr><td class="tc"><b>User Name:</b></td><td><input type="text" name="fn" id="name" required="required">
+			 		<label style="visibility: hidden;color: red;" id="nlabel">Invalid Data minimum 4 characters</label></td></tr>
+
+			 		<tr><td class="tc"><b>Email:</b></td><td><input type="mail" name="fn" id="email" required="required">
+			 		<label style="visibility: hidden;color: red;" id="elabel">Invalid</label></td></tr>
+
+			 		<tr><td class="tc"><b>you can enter two types of mobile numbers:</b></td>
+
+			 			<tr><td></td><td>1. 10 digit number should start with 977<br>2. 12 digit number i.e XXXX-XXXX-XXXX</td>
+			 			</tr>
+
+			 		<tr><td class="tc"><b>Mobile Number:</b></td><td><input type="text" name="num" id="mobile"><label style="visibility:hidden;color: red;" id="mlabel">starts with 997  or enter 12 digits correctly</label></td></tr>
+
+			 		<tr><td class="tc"><b>The participants can be from:</b></td></tr>
+
+			 		<tr><td></td><td align="left"><input type="radio" name="I" id="ind">India<br><input type="radio" name="I" id="usa">USA<br><input type="radio" name="I" id="ing">Ingland<br><input type="radio" name="I" id="ger">Germany<br>
+			 			<input type="radio" name="I" id="ror">Representative of RGUKT</td></tr>
+
+			 		<tr><td class="tc"><b>Payment Type:</b></td> </tr>
+
+			 		<tr><td></td><td align="left"><input type="radio" name="p" id="dd">DD Number<br><input type="radio" name="p" id="account">Through account number</td></tr>
+
+			 		<tr><td class="tc"><b>DD Number / Account Number:</b></td><td><input type="text" name="pay" id="pm" ><label style="visibility: hidden;color: red;" id="plabel">Start with SBIN & 7 digits</label><label style="visibility: hidden;color: red;" id="pmlabel">Account number have 11 digits</label></td></tr>
+
+			 		<tr><td class="tc"><b>Hotels:</b></td></tr>
+
+			 		<tr><td></td><td align="left"><input type="radio" name="h" id="nuz">INuzvid<br><input type="radio" name="h" id="kad">IKADAPA<br><input type="radio" name="h" id="sklm">ISKLM<br><input type="radio" name="h" id="ong">IONGOLE</td></tr>
+
+
+			 		<tr><td class="tc"><b>Services:</b></td></tr>
+
+			 		<tr><td></td><td align="left"><input type="checkbox" name="b" id="bf">Breakfast<br><input type="checkbox" name="l" id="lu">Lunch<br><input type="checkbox" name="s" id="sna">Snacks<br><input type="checkbox" name="t" id="tea">Tea<br><input type="checkbox" name="c" id="cf">Coffee<br><input type="checkbox" name="e" id="egg">Eggs</td></tr>
+
+			 		<tr><td class="tc"><b>Enter no.of days staying:</b></td><td><input type="number" name="nds" id="days">Count Rs
+			 			<input type="checkbox" name="c" id="count" onclick="display();"></td></tr>
+
+			 		<tr><td class="tc"><b>Total cost of the rent:</b></td><td><span id="result"></span></td></tr>
+
+			 		<tr><td></td><td style="font-size: 50px" ><input type="submit" value="submit" id="submit"></td></tr>
+
+			 	</table>
+
+			</form>
+		</div>
+	</center>
+	<script type="text/javascript">
+		
+		function validate()
+		{
+			n=document.getElementById("name").value;
+			var re=/^F[a-z,A-Z]*$/;
+			if(n.length<4 || n.length>9 ||re.test(n)==false)
+			{
+				document.getElementById("name").style.border="3px solid red";
+				document.getElementById("nlabel").style.visibility="visible";
+				return false;
+			}
+
+
+
+			var ree=/^[a-z,A-Z,0-9][a-z,A-Z,0-9,.,\,]*@([a-z]{3,5})\.(com|net|in|edu)$/
+			e=document.getElementById("email").value;
+			if(ree.test(e)==false)
+			{
+				document.getElementById("email").style.border="3px solid red";
+				document.getElementById("elabel").style.visibility="visible";
+				return false;
+
+			}
+
+
+
+			m=document.getElementById("mobile").value;
+			if(m.length>0)
+			{
+				if(m.length==10)
+				{
+					var rem=/^(997)\d{7}$/;
+				
+					if(rem.test(m)==false)
+					{
+						document.getElementById("mobile").style.border="3px solid red";
+						document.getElementById("mlabel").style.visibility="visible";
+						return false;
+					}
+
+				}
+				else if( m.length==12)
+				{
+					var remo=/^\d{4}\-\d{4}\-\d{4}$/;
+					if( remo.test(m)==false)
+					{
+						document.getElementById("mobile").style.border="3px solid red";
+						document.getElementById("mlabel").style.visibility="visible";
+						return false;
+					}
+				}
+				
+			}
+			else
+			{
+				alert("You are not enter mobile number");
+				return false;
+			}
+
+
+			var I=document.getElementById("ind").checked;
+			var U=document.getElementById("usa").checked;
+			var In=document.getElementById("ing").checked;
+			var G=document.getElementById("ger").checked;
+
+			if(U|| In|| G == true)
+			{
+				confirm("Do you want to beer?");
+			}
+
+
+
+			var pay=document.getElementById("dd").checked;
+			var paym=document.getElementById("account").checked;
+			var payment=document.getElementById("pm").value;
+
+			if(pay == true)
+			{
+
+				var rep=/^(SBIN)\d{7}$/;
+				if(rep.test(payment)== false)
+				{
+				
+					document.getElementById("pm").style.border="3px solid red";
+					document.getElementById("plabel").style.visibility="visible";
+					return false;
+				}
+			}
+			else if(paym== true)
+			{
+				var repm=/^\d{12}$/;
+				if(repm.test(payment) == false)
+				{
+					document.getElementById("pm").style.border="3px solid red";
+					document.getElementById("pmlabel").style.visibility="visible";
+					return false;
+				}
+			}
+			else
+			{
+				alert("You are not select payment type");
+				return false;
+			}
+		}
+
+
+		function display()
+		{
+
+			var n=document.getElementById("nuz").checked;
+			var k=document.getElementById("kad").checked;
+			var s=document.getElementById("sklm").checked;
+			var o=document.getElementById("ong").checked;
+			var c=document.getElementById("count").checked;
+
+			if(c == true)
+			{
+				if( n || k ==true)
+				{
+						
+						document.getElementById("result").innerHTML= document.getElementById("days").value*2000 ; ;
+
+				}
+				// rent=d*2000;
+				// return d;
+
+				else if( s || o ==true)
+				{
+						document.getElementById("result").innerHTML= document.getElementById("days").value*3000 ;
+				// rent=d*3000;
+				// return d;
+				}
+			}
+			else{
+				alert("You are not enter no.of days staying");
+				return false;
+			}
+
+		}
+			
+		function upper()
+		{
+			var u=document.getElementById("name").value.toUpperCase();
+			document.getElementById('name').value=u;
+		}
+
+		na=document.getElementById("name");
+		na.addEventListener('keyup',upper);
+
+	</script>
+</body>
+</html>
+
